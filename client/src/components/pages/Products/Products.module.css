@@ -1,0 +1,15 @@
+
+.goods__wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.goods__title {
+
+}
+
+.goods {
+  display: flex;
+  flex-wrap: wrap;
+}

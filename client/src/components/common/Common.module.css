@@ -1,0 +1,260 @@
+/* ========= HEADER ======== */
+
+.header {
+  width: 100vw;
+  border-bottom: 2px solid rgb(231, 231, 231);
+}
+
+.header__wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  padding: 6px 0;
+}
+
+.header__logo {
+  justify-self: start;
+  text-transform: uppercase;
+  font-size: 28px;
+  font-weight: 800;
+  color: #191919;
+}
+
+.header__menu {
+  text-align: center;
+}
+
+.header__menu_item {
+  font-size: 17px;
+  color: rgb(66, 66, 66);
+  position: relative;
+  padding: 8px 0;
+}
+
+.header__menu_item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 3px;
+  width: 100%;
+  background: #000;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.header__menu_item:hover::after {
+  bottom: 6px;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.header__menu_item:not(:last-child) {
+  margin-right: 20px;
+}
+
+.header__menu_active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 6px;
+  height: 3px;
+  width: 100%;
+  background: #000;
+  opacity: 1;
+}
+
+.header__cart {
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  background: #191919;
+  border-radius: 20px;
+  padding: 5px 16px;
+}
+
+.header__cart_icon {
+  color: rgb(70, 70, 70);
+  color: #fff;
+}
+
+.header__cart_count {
+  margin-left: 4px;
+  color: rgb(70, 70, 70);
+  font-weight: 400;
+  font-size: 13px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* ========= NAVBAR ======== */
+
+.navbar {
+  background: #191919;
+}
+
+.navbar__wrapper {
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.navbar__item {
+  margin-right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navbar__item_name {
+  color: #fff;
+  font-weight: 300;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+/* ======= CARD ======= */
+
+.card {
+  width: 590px;
+  display: grid;
+  grid-template-columns: 160px auto;
+  background: #fff;
+  box-shadow: 0 2px 11px 0 #e4e4e4;
+  padding: 14px;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease;
+}
+
+/* .card:hover {
+  transform: translateY(-2px);
+  transition: transform 0.2s ease;
+} */
+
+.card:nth-child(odd) {
+  margin-right: 20px;
+}
+
+.card__left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid rgb(224, 224, 224);
+  padding-right: 10px;
+}
+
+.card__img {
+
+}
+
+.card__img img {
+  height: 200px;
+}
+
+.card__minPrice {
+  margin-top: 6px;
+  align-self: flex-start;
+  font-size: 20px;
+  font-weight: 600;
+  color: #3a3a3a;
+  display: flex;
+  align-items: center;
+}
+
+.card__minPrice span {
+  font-weight: 300;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.card__addToCart {
+  margin-top: 6px;
+  width: 100%;
+  background: rgb(236, 36, 36);
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  cursor: pointer;
+  font-weight: 300;
+  box-shadow: 0 2px 2px 0 #afafaf;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.card__right {
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__name {
+  margin-bottom: 4px;
+  margin-left: 2px;
+}
+
+.card__rating {
+  cursor: pointer;
+  margin-bottom: 4px;
+  color: #fca432;
+}
+
+.card__description {
+  margin-left: 2px;
+  display: flex;
+}
+
+.card__actions {
+  margin-top: auto;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card__reviews {
+  color: #696969;
+  border-bottom: 1px solid #69696900;
+}
+
+.card__reviews:hover {
+  border-bottom: 1px solid #696969;
+}
+
+.card__colors {
+  display: flex;
+}
+
+.card__color {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-left: 8px;
+  position: relative;
+  border: 1px solid rgb(170, 170, 170);
+  display: inline-block;
+}
+
+.card__color_name {
+  position: absolute;
+  right: 0;
+  bottom: 24px;
+  font-size: 12px;
+  width: 100px;
+  background: rgb(255, 255, 255);
+  opacity: 0;
+  text-align: center;
+  padding: 6px 4px;
+  border: 1px solid rgb(228, 228, 228);
+  border-radius: 14px;
+  box-shadow: 0 2px 11px 0 #e4e4e4;
+  color: rgb(114, 114, 114);
+  font-weight: 500;
+}
+
+.card__color:hover .card__color_name{
+  opacity: 1;
+}
