@@ -38,15 +38,22 @@
   position: absolute;
   left: 0;
   bottom: -6px;
-  height: 3px;
+  height: 5px;
   width: 100%;
   background: #000;
+  background: linear-gradient(
+    90deg,
+    rgba(221, 43, 80, 1) 0%,
+    rgba(241, 149, 47, 1) 100%
+  );
+  box-shadow: 0 2px 4px 0 #b1b1b1;
+  border: 1px solid rgb(233, 233, 233);
   opacity: 0;
   transition: all 0.3s ease;
 }
 
 .header__menu_item:hover::after {
-  bottom: 6px;
+  bottom: 3px;
   opacity: 1;
   transition: all 0.3s ease;
 }
@@ -59,10 +66,17 @@
   content: "";
   position: absolute;
   left: 0;
-  bottom: 6px;
-  height: 3px;
+  bottom: 3px;
+  height: 5px;
   width: 100%;
   background: #000;
+  background: linear-gradient(
+    90deg,
+    rgba(221, 43, 80, 1) 0%,
+    rgba(241, 149, 47, 1) 100%
+  );
+  box-shadow: 0 2px 4px 0 #b1b1b1;
+  border: 1px solid rgb(233, 233, 233);
   opacity: 1;
 }
 
@@ -71,8 +85,20 @@
   display: flex;
   align-items: center;
   background: #191919;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 212, 255, 1) 0%,
+    rgba(92, 92, 235, 1) 100%
+  );
+  background: linear-gradient(
+    90deg,
+    rgba(221, 43, 80, 1) 0%,
+    rgba(241, 149, 47, 1) 100%
+  );
   border-radius: 20px;
   padding: 5px 16px;
+  box-shadow: 0 2px 8px 0 #8b8b8b;
+  border: 1px solid rgb(231, 231, 231);
 }
 
 .header__cart_icon {
@@ -93,23 +119,33 @@
 
 .navbar {
   background: #191919;
+  width: 100vw;
 }
 
 .navbar__wrapper {
   width: 1200px;
   margin: 0 auto;
+  padding: 20px 0;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding: 20px 0;
+}
+
+.navbar__menu {
+  display: flex;
 }
 
 .navbar__item {
-  margin-right: 20px;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.navbar__item:not(:last-child) {
+  margin-right: 20px;
+}
+
+
 
 .navbar__item_name {
   color: #fff;
@@ -148,12 +184,18 @@
   padding-right: 10px;
 }
 
-.card__img {
-
+.img__wrapper {
+  height: 200px;
+  width: 100%;
 }
 
-.card__img img {
-  height: 200px;
+.img__wrapper_img {
+  height: 100%;
+  width: 100%;
+  background: inherit;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .card__minPrice {
@@ -182,7 +224,7 @@
   cursor: pointer;
   font-weight: 300;
   box-shadow: 0 2px 2px 0 #afafaf;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid rgb(150, 9, 9);
 }
 
 .card__right {
@@ -255,6 +297,6 @@
   font-weight: 500;
 }
 
-.card__color:hover .card__color_name{
+.card__color:hover .card__color_name {
   opacity: 1;
 }

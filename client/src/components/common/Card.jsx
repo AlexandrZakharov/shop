@@ -28,10 +28,10 @@ const Card = (props) => {
     <div className={styles.card}>
       <div className={styles.card__left}>
         <Link
-          to={`/catalog/phones/${props.product.link}`}
-          className={styles.card__img}
+          to={`/catalog/${props.product.type}/${props.product.link}`}
+          className={styles.img__wrapper}
         >
-          <img src={props.product.images[0]} alt={props.product.name} />
+          <div className={styles.img__wrapper_img} style={{backgroundImage: `url(${props.product.images[0]})`}}></div>
         </Link>
         <span className={styles.card__minPrice}>
           <span>From</span> ${props.product.minPrice}
@@ -41,7 +41,7 @@ const Card = (props) => {
       <div className={styles.card__right}>
         <h3 className={styles.card__name}>
           <Link
-            to={`/catalog/phones/${props.product.link}`}
+            to={`/catalog/${props.product.type}/${props.product.link}`}
             onClick={props.getProductPending}
           >
             {props.product.name}

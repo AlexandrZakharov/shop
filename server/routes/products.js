@@ -69,21 +69,68 @@ router.get("/getproduct/:link", (req, res) => {
     if (product) {
       res.json(product);
     } else {
-      return res
-        .status(442)
-        .json({ error: "Page not found" });
+      return res.status(442).json({ error: "Page not found" });
     }
   });
 });
 
-router.get("/getproducts/:type", (req, res) => {
-  Product.find({ type: req.params.type })
+router.get("/getproducts/:type", async (req, res) => {
+  await Product.find({ type: req.params.type })
     .then((products) => {
       res.json(products);
     })
     .catch((error) => {
       return res.status(442).json({ error });
     });
+});
+
+router.get("/getcatalog", async (req, res) => {
+  const catalog = [];
+  await Product.find({ type: "phones" })
+    .limit(4)
+    .then((products) => {
+      catalog.push({
+        type: products[0].type,
+        products
+      });
+    })
+    .catch((error) => {
+      return res.status(442).json({ error });
+    });
+  await Product.find({ type: "tablets" })
+    .limit(4)
+    .then((products) => {
+      catalog.push({
+        type: products[0].type,
+        products
+      });
+    })
+    .catch((error) => {
+      return res.status(442).json({ error });
+    });
+  await Product.find({ type: "laptops" })
+    .limit(4)
+    .then((products) => {
+      catalog.push({
+        type: products[0].type,
+        products
+      });
+    })
+    .catch((error) => {
+      return res.status(442).json({ error });
+    });
+  await Product.find({ type: "headsets" })
+    .limit(4)
+    .then((products) => {
+      catalog.push({
+        type: products[0].type,
+        products
+      });
+    })
+    .catch((error) => {
+      return res.status(442).json({ error });
+    });
+  await res.json(catalog);
 });
 
 module.exports = router;

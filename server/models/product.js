@@ -59,20 +59,20 @@ mongoose.model("Product", productSchema);
 //   "description": "Apple iOS, экран 6.1\" OLED (1170x2532), Apple A14 Bionic, ОЗУ 4 ГБ, флэш-память 128 ГБ, камера 12 Мп, аккумулятор 2815 мАч, 1 SIM",
 //   "rating": "4.5",
 //   "minPrice": "799",
-  // "configurations": [
-  //     {
-  //         "memory": "64",
-  //         "price": "799"
-  //     },
-  //     {
-  //         "memory": "128",
-  //         "price": "849"
-  //     },
-  //             {
-  //         "memory": "256",
-  //         "price": "949"
-  //     }
-  // ],
+//   "configurations": [
+//       {
+//           "memory": "64",
+//           "price": "799"
+//       },
+//       {
+//           "memory": "128",
+//           "price": "849"
+//       },
+//               {
+//           "memory": "256",
+//           "price": "949"
+//       }
+//   ],
 //   "colors": [
 //       {
 //           "hex": "#000000",

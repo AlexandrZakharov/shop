@@ -17,7 +17,7 @@ const ImgSlider = (props) => {
   return (
     <div className={styles.slider}>
       <div className={styles.img__wrapper}>
-        {props.images.map((img) => {
+        {props.images.map((img, i) => {
           return (
             <div
               className={styles.img__wrapper_img}
@@ -25,6 +25,7 @@ const ImgSlider = (props) => {
                 backgroundImage: `url(${img})`,
                 transform: `translateX(${translate}px)`,
               }}
+              key={i}
             ></div>
           );
         })}

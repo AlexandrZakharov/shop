@@ -1,24 +1,28 @@
 import { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Card from "../../common/Card";
 import styles from "./Products.module.css";
+import Navbar from '../../common/Navbar';
+import Header from '../../common/Header';
 
 const Products = (props) => {
-  const history = useHistory();
   const getProducts = props.getProducts;
+  const { productType } = useParams();
   useEffect(() => {
-    const productsType = history.location.pathname.split("/").splice(-1)[0];
-    getProducts(productsType[0].toUpperCase() + productsType.slice(1));
-  }, []);
+    props.clearState()
+    getProducts(productType);
+  }, [productType]);
   return (
     <div className={styles.products}>
-      <section className={styles.goods__wrapper}>
+      <Header active={'Catalog'} />
+      <Navbar />
+      <div className="Container">
         {props.products ? (
           <>
             <div className={styles.goods__link}>
               <Link to="/catalog">Catalog</Link> {">"} {props.type}
             </div>
-            <h2 className={styles.goods__title}>{props.type}</h2>
+            <span className={styles.products__title}>{props.type}</span>
             <div className={styles.goods}>
               {props.products.map((item) => {
                 return (
@@ -35,7 +39,7 @@ const Products = (props) => {
         ) : (
           "Loading"
         )}
-      </section>
+      </div>
     </div>
   );
 };

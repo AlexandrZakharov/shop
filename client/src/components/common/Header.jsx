@@ -8,22 +8,18 @@ const Header = (props) => {
     {
       text: "Home",
       src: "/",
-      isActive: true,
     },
     {
       text: "Catalog",
       src: "/catalog",
-      isActive: false,
     },
     {
       text: "About us",
       src: "/about",
-      isActive: false,
     },
     {
       text: "Ship",
       src: "/ship",
-      isActive: false,
     },
   ]);
   return (
@@ -36,20 +32,12 @@ const Header = (props) => {
               <Link
                 to={item.src}
                 className={
-                  item.isActive
+                  item.text === props.active
                     ? `${styles.header__menu_item} ${styles.header__menu_active}`
                     : styles.header__menu_item
                 }
                 key={i}
-                onClick={(e) => {
-                  setMenuItems([
-                    ...menuItems.map((a) => {
-                      return item === a
-                        ? { ...a, isActive: true }
-                        : { ...a, isActive: false };
-                    }),
-                  ]);
-                }}
+                
               >
                 {item.text}
               </Link>

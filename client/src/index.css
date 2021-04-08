@@ -12,6 +12,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 ul[class],
@@ -21,6 +22,7 @@ ol[class] {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 body,

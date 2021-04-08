@@ -1,20 +1,31 @@
 const ProductsAPI = {
-  getProduct(link) {
-    return fetch(`/getproduct/${link}`, {
+  async getProduct(link) {
+    const res = await fetch(`/getproduct/${link}`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
-      }
-    }).then((res) => res.json())
+        "Content-Type": "application/json",
+      },
+    });
+    return await res.json();
   },
-  getProducts(type) {
-    return fetch(`/getproducts/${type}`, {
+  async getProducts(type) {
+    const res = await fetch(`/getproducts/${type}`, {
       method: "GET",
       headers: {
-        "Content-Type": "application/json"
-      }
-    }).then((res) => res.json())
-  }
-}
+        "Content-Type": "application/json",
+      },
+    });
+    return await res.json();
+  },
+  async getCatalog() {
+    const res = await fetch("/getcatalog", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return await res.json();
+  },
+};
 
 export default ProductsAPI;

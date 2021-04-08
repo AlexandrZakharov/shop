@@ -4,6 +4,8 @@ const GETPRODUCTS_PENDING = "GETPRODUCTS-PENDING";
 const GETPRODUCTS_SUCCESS = "GETPRODUCTS-SUCCESS";
 const GETPRODUCTS_ERROR = "GETPRODUCTS-ERROR";
 
+const CLEAR_STATE = "CLEAR-STATE";
+
 const initialState = {
   type: null,
   products: null,
@@ -31,6 +33,13 @@ const reducer = (state = initialState, action) => {
         error: true,
         loading: false
       }
+    case CLEAR_STATE:
+      return {
+        type: null,
+        products: null,
+        loading: false,
+        error: false,
+      }  
     default:
       return state;
   }
@@ -42,6 +51,7 @@ const getProductsSuccess = (products) => ({
   products,
 });
 const getProductsError = () => ({ type: GETPRODUCTS_ERROR });
+export const clearState = () => ({ type: CLEAR_STATE })
 
 export const getProducts = (type) => {
   return (dispatch) => {

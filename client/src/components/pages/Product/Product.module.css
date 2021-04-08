@@ -1,4 +1,6 @@
-.product {
+
+
+.product__inner {
   width: 1200px;
   margin: 0 auto;
   margin-top: 20px;
@@ -136,4 +138,15 @@
 
 .slider__nav_arrow:hover span {
   color: rgb(136, 136, 136);
+}
+
+.product__button {
+  width: 180px;
+  padding: 16px 0;
+  background: rgb(223, 18, 18);
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  margin-top: auto;
+  font-size: 17px;
 }

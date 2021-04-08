@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Products from "./Products";
-import { getProducts } from '../../../redux/reducers/products';
+import { getProducts, clearState } from '../../../redux/reducers/products';
 import { getProductPending } from '../../../redux/reducers/product';
 
 const mapStateToProps = (state) => {
@@ -14,6 +14,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getProducts: (type) => dispatch(getProducts(type)),
     getProductPending: () => dispatch(getProductPending()),
+    clearState: () => dispatch(clearState())
   };
 };
 
