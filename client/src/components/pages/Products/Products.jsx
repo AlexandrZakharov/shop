@@ -4,6 +4,7 @@ import Card from "../../common/Card";
 import styles from "./Products.module.css";
 import Navbar from '../../common/Navbar';
 import Header from '../../common/Header';
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Products = (props) => {
   const getProducts = props.getProducts;
@@ -37,7 +38,7 @@ const Products = (props) => {
             </div>
           </>
         ) : (
-          "Loading"
+          <CircularProgress />
         )}
       </div>
     </div>

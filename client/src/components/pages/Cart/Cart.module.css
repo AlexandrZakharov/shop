@@ -1,0 +1,141 @@
+.cart {
+  padding-bottom: 50px;
+}
+
+.cart__wrapper {
+
+  padding-top: 20px;
+}
+
+.cart__items {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart__item {
+  display: flex;
+  background: #fff;
+  box-shadow: 0 2px 11px 0 #e4e4e4;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.cart__item:hover .item__delete {
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+
+.item__img {
+  width: 120px;
+  height: 140px;
+  background: inherit;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.item__info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  width: 600px;
+}
+
+.item__name {
+  font-size: 18px;
+}
+
+.item__description {
+  margin-top: 4px;
+  color: #5c5c5c;
+}
+
+.item__configuration {
+  display: flex;
+  margin-top: auto;
+}
+
+.item__singleConfig {
+  margin-right: 10px;
+  text-transform: capitalize;
+  font-size: 14px;
+  color: #5c5c5c;
+}
+
+.singleConfig__value {
+  font-size: 15px;
+  color: rgb(46, 46, 46);
+  font-weight: 500;
+}
+
+.item__delete {
+  color: #727272;
+  align-self: center;
+  margin-left: 60px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px 0 #b1b0b0;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.item__count {
+  align-self: center;
+  padding: 6px 14px;
+  font-size: 15px;
+  border: 1px solid #e0e0e0;
+  color: #202020;
+  font-weight: 300;
+  margin-left: 90px;
+}
+
+.item__price {
+  align-self: center;
+  margin-left: auto;
+  margin-right: 40px;
+  font-size: 20px;
+}
+
+.cart__totalInfo {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.totalInfo__count {
+  margin-right: 20px;
+  font-size: 18px;
+  color: #6b6b6b;
+}
+
+.totalInfo__totalPrice {
+  font-size: 20px;
+  margin-right: 50px;
+}
+
+.checkout__button {
+  padding: 10px 0;
+  max-width: 140px;
+  text-align: center;
+  background: rgb(49, 196, 85);
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 50px;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: 0 2px 4px 0 #cecece;
+  border: 1px solid rgb(233, 233, 233);
+  transition: all 0.2s ease;
+}
+
+.checkout__button:hover {
+  transform: translateY(-3px);
+  transition: all 0.2s ease;
+}

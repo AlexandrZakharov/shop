@@ -1,35 +1,72 @@
 import styles from "./Common.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
 import TabletIcon from "@material-ui/icons/Tablet";
 import LaptopIcon from "@material-ui/icons/Laptop";
 import HeadsetIcon from "@material-ui/icons/Headset";
 
 const Navbar = (props) => {
-  const iconStyles = {
-    fontSize: "30px",
-    color: "#fff",
+  const menuItems = [
+    {
+      text: "Phones",
+      src: "/catalog/phones",
+      icon: PhoneAndroidIcon,
+    },
+    {
+      text: "Tablets",
+      src: "/catalog/tablets",
+      icon: TabletIcon,
+    },
+    {
+      text: "Laptops",
+      src: "/catalog/laptops",
+      icon: LaptopIcon,
+    },
+    {
+      text: "Headsets",
+      src: "/catalog/headsets",
+      icon: HeadsetIcon,
+    },
+  ];
+  const { productType } = useParams();
+
+  const setIconStyle = (param, isIcon = false) => {
+    switch (isIcon) {
+      case true:
+        return productType === param
+          ? {
+              fontSize: "30px",
+              color: "#FFFFFF",
+            }
+          : {
+              fontSize: "30px",
+              color: "#858585",
+            };
+      case false:
+        return productType === param
+          ? {
+              color: "#FFFFFF"
+            }
+          : null;
+      default:
+        return;
+    }
   };
   return (
     <div className={styles.navbar}>
       <div className={styles.navbar__wrapper}>
         <div className={styles.navbar__menu}>
-          <Link to={"/catalog/phones"} className={styles.navbar__item}>
-            <PhoneAndroidIcon style={iconStyles} />
-            <span className={styles.navbar__item_name}>Phones</span>
-          </Link>
-          <Link to={"/catalog/tablets"} className={styles.navbar__item}>
-            <TabletIcon style={iconStyles} />
-            <span className={styles.navbar__item_name}>Tablets</span>
-          </Link>
-          <Link to={"/catalog/laptops"} className={styles.navbar__item}>
-            <LaptopIcon style={iconStyles} />
-            <span className={styles.navbar__item_name}>Laptops</span>
-          </Link>
-          <Link to={"/catalog/headsets"} className={styles.navbar__item}>
-            <HeadsetIcon style={iconStyles} />
-            <span className={styles.navbar__item_name}>Headsets</span>
-          </Link>
+          {menuItems.map((item) => (
+            <Link to={item.src} className={styles.navbar__item} key={item.src}>
+              <item.icon style={setIconStyle(item.text.toLowerCase(), true)} />
+              <span
+                className={styles.navbar__item_name}
+                style={setIconStyle(item.text.toLowerCase())}
+              >
+                {item.text}
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
     </div>

@@ -1,20 +1,40 @@
 import styles from "./Product.module.css";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ImgSlider from "./components/ImgSlider";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../common/Navbar";
 import Header from "../../common/Header";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const Product = (props) => {
   const { productLink } = useParams();
+
   useEffect(() => {
     props.getProduct(productLink);
   }, [productLink]);
-  const addToCart = () => {
-    const storage = JSON.parse(localStorage.getItem("cart"));
-    localStorage.setItem("cart", JSON.stringify([...storage, props.product]))
-  }
-  console.log(props)
+
+  const valueStyle = (isSelected = false, color = false) => {
+    if (isSelected && color) {
+      return {
+        outline: "3px solid rgb(204, 204, 204)",
+        background: color,
+      };
+    } else if (color) {
+      return {
+        border: "1px solid rgb(204, 204, 204)",
+        background: color,
+      };
+    } else if (isSelected) {
+      return {
+        outline: "3px solid rgb(204, 204, 204)",
+      };
+    } else {
+      return {
+        border: "1px solid rgb(204, 204, 204)",
+      };
+    }
+  };
+
   return (
     <div className={styles.product}>
       <Header active={"Catalog"} />
@@ -44,73 +64,68 @@ const Product = (props) => {
                 <span className={styles.product__description}>
                   {props.product.description}
                 </span>
-                {props.product.configurations.length ? (
-                  <div className={styles.product__configuration}>
-                    {props.product.configurations[0].memory ? (
-                      <>
-                        <span>Memory:</span>
-                        <div className={styles.configuration__type}>
-                          {props.product.configurations.map((conf) => {
-                            return (
-                              <div
-                                className={styles.configuration__type_item}
-                                key={conf._id}
-                              >
-                                {conf.memory}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </>
-                    ) : (
-                      ""
-                    )}
-                    {props.product.configurations[0].RAM ? (
-                      <>
-                        <span>RAM:</span>
-                        <div className={styles.configuration__type}>
-                          {props.product.configurations.map((conf, i) => {
-                            return (
-                              <div
-                                className={styles.configuration__type_item}
-                                key={conf._id}
-                              >
-                                {conf.RAM}
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </>
-                    ) : (
-                      ""
-                    )}
-                    <div className={styles.conf__colors}>
-                      <span>Color:</span>
-                      {props.product.colors.map((color) => {
-                        return (
-                          <div
-                            className={styles.card__color}
-                            style={{ background: `${color.hex}` }}
-                            key={color._id}
-                          >
-                            <span className={styles.card__color_name}>
-                              {color.name}
-                            </span>
+                {props.product.config.length ? (
+                  <div className={styles.product__configs}>
+                    {props.product.config.map((conf, i) => {
+                      return (
+                        <div className={styles.product__config} key={i}>
+                          <span className={styles.config__name}>
+                            {conf.configName}:{" "}
+                            {props.product.selectedConfig[conf.configName]}
+                          </span>
+                          <div className={styles.config__values}>
+                            {conf.values.map((value, n) => {
+                              return (
+                                <div
+                                  className={styles.config__value}
+                                  key={n}
+                                  style={valueStyle(
+                                    value.isSelected,
+                                    value.hex
+                                  )}
+                                  onClick={() => {
+                                    props.selectConfig(
+                                      conf.configName,
+                                      value.value
+                                    );
+                                    props.calculateTotalPrice();
+                                  }}
+                                >
+                                  {conf.configName !== "colors"
+                                    ? value.value
+                                    : ""}
+                                </div>
+                              );
+                            })}
                           </div>
-                        );
-                      })}
-                    </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 ) : (
                   ""
                 )}
-                <span className={styles.product__price}>${props.product.minPrice}</span>
-                <div className={styles.product__button} onClick={addToCart}>Add to cart</div>
+                <span className={styles.product__price}>
+                  Price:
+                  {props.product.selectedConfig?.totalPrice
+                    ? `$${props.product.selectedConfig.totalPrice}`
+                    : `from $${props.product.minPrice}`}
+                </span>
+                {props.product.selectedConfig.totalPrice ? (
+                  <div
+                    className={styles.product__button}
+                    onClick={() => props.addToCart(props.product)}
+                  >
+                    Add to cart
+                  </div>
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </>
         ) : (
-          "LOADING..."
+          <CircularProgress />
         )}
       </div>
     </div>

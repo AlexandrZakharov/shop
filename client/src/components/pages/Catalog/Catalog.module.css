@@ -17,6 +17,7 @@
   font-weight: 600;
   text-transform: capitalize;
   position: relative;
+  transition: all 0.4s ease;
 }
 
 .catalog__type_title a::after {
@@ -28,6 +29,11 @@
   height: 3px;
   background: #000;
   transition: all 0.2s ease;
+}
+
+.catalog__type_title a:hover {
+  padding-left: 10px;
+  transition: all 0.4s ease;
 }
 
 .catalog__type_title a:hover::after {
@@ -45,6 +51,7 @@
   box-shadow: 0 2px 11px 0 #e4e4e4;
   display: grid;
   grid-template-rows: 40px 1fr;
+  position: relative;
 }
 
 .catalog__item:not(:nth-child(4n)) {
@@ -58,6 +65,7 @@
 
 .item__name {
   font-size: 16px;
+  font-weight: 500;
   margin-top: 10px;
   width: 100%;
   text-align: center;
@@ -112,4 +120,15 @@
   background-size: contain;
   background-repeat: no-repeat;
   transition: all 0.2s ease;
+}
+
+.item__price {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: rgb(231, 28, 28);
+  color: #fff;
+  padding: 10px;
+  border-radius: 15px 0 0 0;
+  box-shadow: -1px -1px 6px 0 #838383;
 }

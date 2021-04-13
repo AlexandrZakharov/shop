@@ -30,13 +30,23 @@ const Card = (props) => {
         <Link
           to={`/catalog/${props.product.type}/${props.product.link}`}
           className={styles.img__wrapper}
+          onClick={props.getProductPending}
         >
-          <div className={styles.img__wrapper_img} style={{backgroundImage: `url(${props.product.images[0]})`}}></div>
+          <div
+            className={styles.img__wrapper_img}
+            style={{ backgroundImage: `url(${props.product.images[0]})` }}
+          />
         </Link>
         <span className={styles.card__minPrice}>
           <span>From</span> ${props.product.minPrice}
         </span>
-        <div className={styles.card__addToCart}>Add to cart</div>
+        <Link
+          to={`/catalog/${props.product.type}/${props.product.link}`}
+          onClick={props.getProductPending}
+          className={styles.card__addToCart}
+        >
+          <div>More info</div>
+        </Link>
       </div>
       <div className={styles.card__right}>
         <h3 className={styles.card__name}>

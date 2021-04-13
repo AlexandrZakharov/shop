@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Product from "./Product";
-import { getProduct } from "../../../redux/reducers/product";
+import { getProduct, selectConfig, calculateTotalPrice } from "../../../redux/reducers/product";
+import { addToCart } from "../../../redux/reducers/cart";
 
 const mapStateToProps = (state) => {
   return {
@@ -10,7 +11,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProduct: (link) => dispatch(getProduct(link))
+    getProduct: (link) => dispatch(getProduct(link)),
+    addToCart: (product) => dispatch(addToCart(product)),
+    selectConfig: (configName, value) => dispatch(selectConfig(configName, value)),
+    calculateTotalPrice: () => dispatch(calculateTotalPrice()),
   };
 };
 

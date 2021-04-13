@@ -1,7 +1,6 @@
 /* ========= HEADER ======== */
 
 .header {
-  width: 100vw;
   border-bottom: 2px solid rgb(231, 231, 231);
 }
 
@@ -119,7 +118,6 @@
 
 .navbar {
   background: #191919;
-  width: 100vw;
 }
 
 .navbar__wrapper {
@@ -148,10 +146,15 @@
 
 
 .navbar__item_name {
-  color: #fff;
+  color: #cccccc;
   font-weight: 300;
   font-size: 14px;
   margin-top: 6px;
+}
+
+
+.navbar__item:hover * {
+  color: #fff;
 }
 
 /* ======= CARD ======= */

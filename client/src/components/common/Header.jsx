@@ -1,10 +1,18 @@
 import styles from "./Common.module.css";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+
+const mapStateToProps = (state) => {
+  return {
+    products: state.cart.products
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({});
 
 const Header = (props) => {
-  const [menuItems, setMenuItems] = useState([
+  const menuItems = [
     {
       text: "Home",
       src: "/",
@@ -21,7 +29,11 @@ const Header = (props) => {
       text: "Ship",
       src: "/ship",
     },
-  ]);
+  ];
+  let cartCount = 0;
+  for(let product of props.products) {
+    cartCount += Number(product.cart.count)
+  }
   return (
     <div className={styles.header}>
       <div className={styles.header__wrapper}>
@@ -37,7 +49,6 @@ const Header = (props) => {
                     : styles.header__menu_item
                 }
                 key={i}
-                
               >
                 {item.text}
               </Link>
@@ -48,11 +59,11 @@ const Header = (props) => {
           <div  className={styles.header__cart_icon}>
             <ShoppingCartIcon />
           </div>
-          <span className={styles.header__cart_count}>2</span>
+          <span className={styles.header__cart_count}>{cartCount}</span>
         </Link>
       </div>
     </div>
   );
 };
 
-export default Header;
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

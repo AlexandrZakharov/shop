@@ -39,7 +39,7 @@ const productSchema = new mongoose.Schema({
       price: String,
     },
   ],
-  colors: [{ hex: String, name: String }],
+  colors: [{ hex: String, value: String }],
 });
 
 mongoose.model("Product", productSchema);
